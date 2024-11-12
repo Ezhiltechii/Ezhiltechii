@@ -2,8 +2,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cook_bite/rotuers.dart';
-import 'package:cook_bite/screen/loginScreen/login_bloc.dart';
-import 'package:cook_bite/screen/loginScreen/login_screen.dart';
 import 'package:cook_bite/screen/splash_screen/splash_screen.dart';
 import 'package:cook_bite/utils/app_themes.dart';
 import 'package:cook_bite/utils/bloc.dart';

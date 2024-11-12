@@ -2,8 +2,9 @@
 import 'dart:async';
 
 import 'package:cook_bite/rotuers.dart';
-import 'package:cook_bite/screen/loginScreen/login_screen.dart';
+import 'package:cook_bite/utils/images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -28,19 +29,23 @@ class _SplashScreenState extends State<SplashScreen> {
       //   context,
       //   MaterialPageRoute(builder: (context) => LoginScreen()),
       // );
-      Navigator.pushNamed(context, AppRoutes.loginScreen);
+      Navigator.pushNamed(context, AppRoutes.landingScreen);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
             Center(
-              child: Icon(Icons.abc)
+              child: SvgPicture.asset(
+                ImageResources.splashScreen,
+                // width: 100,
+                // height: 100,
+              )
             ),
           ],
         ),
