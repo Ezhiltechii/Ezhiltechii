@@ -2,6 +2,9 @@
 import 'package:cook_bite/screen/dashboard/dasboard_event.dart';
 import 'package:cook_bite/screen/dashboard/dasboard_screen.dart';
 import 'package:cook_bite/screen/dashboard/dashboard_bloc.dart';
+import 'package:cook_bite/screen/food_detail_screen/food_detail_bloc.dart';
+import 'package:cook_bite/screen/food_detail_screen/food_detail_event.dart';
+import 'package:cook_bite/screen/food_detail_screen/food_details_screen.dart';
 import 'package:cook_bite/screen/landing_screen/landing_bloc.dart';
 import 'package:cook_bite/screen/landing_screen/landing_event.dart';
 import 'package:cook_bite/screen/landing_screen/landing_screen.dart';
@@ -22,6 +25,7 @@ class AppRoutes {
   static const String landingScreen = 'landing_screen';
   static const String dashboardScreen = 'dashboard_screen';
   static const String profileScreen = 'profile_screen';
+  static const String detailScreen = 'details_screen';
 
 }
 
@@ -35,6 +39,8 @@ Route<dynamic> getRoute(RouteSettings settings) {
       return _buildDashboardScreen();
     case AppRoutes.profileScreen:
       return _buildProfileScreen();
+    case AppRoutes.detailScreen:
+      return _buildDetailScreen();
   }
   return _buildInProgressScreen();
 }
@@ -74,6 +80,15 @@ Route<dynamic> _buildProfileScreen() {
   );
 }
 
+// _buildDetailScreen
+
+Route<dynamic> _buildDetailScreen() {
+  return MaterialPageRoute(
+    builder: (BuildContext context) =>
+        addAuthBloc(context, PageBuilder.buildDetailScreen()),
+  );
+}
+
 class PageBuilder {
   static Widget buildInProgressScreen() {
     return BlocProvider(
@@ -108,6 +123,13 @@ class PageBuilder {
     return BlocProvider(create: (BuildContext context) =>
     ProfileBloc()..add(ProfileInitialEvent()),
       child: const ProfileScreen(),
+    );
+  }
+
+  static Widget buildDetailScreen() {
+    return BlocProvider(create: (BuildContext context) =>
+    FoodDetailBloc()..add( FoodDetailInitialEvent()),
+      child: const FoodDetailScreen(),
     );
   }
 }

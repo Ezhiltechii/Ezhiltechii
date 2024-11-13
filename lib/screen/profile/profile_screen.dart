@@ -4,6 +4,7 @@
 
 import 'package:cook_bite/base/base_state.dart';
 import 'package:cook_bite/screen/profile/profile_bloc.dart';
+import 'package:cook_bite/widgets/customTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,8 +20,6 @@ class _LoginScreenState extends State<ProfileScreen> {
 
   final Widget? page;
   late ProfileBloc bloc;
-  final TextEditingController _credentialController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -47,10 +46,112 @@ class _LoginScreenState extends State<ProfileScreen> {
         builder: (BuildContext context, BaseState state) {
           return SafeArea(
             child: Scaffold(
-                body: Column(
-                  children: [
-                    Text('Dashboard')
-                  ],
+                appBar: AppBar(
+                  title: const Text("Profile"),
+                ),
+                body: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              const CircleAvatar(
+                                radius: 60,
+                                child: Icon(Icons.person),// Adjust size as needed
+                                // backgroundImage: AssetImage('assets/avatar_placeholder.png'), // Replace with your asset
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Handle camera icon tap
+                                  },
+                                  child: const CircleAvatar(
+                                    radius: 18,
+                                    backgroundColor: Colors.blueAccent,
+                                    child: Icon(
+                                      Icons.camera_alt,
+                                      color: Colors.white,
+                                      size: 18,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                        ),
+
+                        SizedBox(height: 30,),
+
+                        const CustomTextForm(
+                          hintText: 'Enter username',
+                          labelText: 'UserName',
+                          // focusNode: ,
+
+                        ),
+
+                        const SizedBox(height: 25,),
+
+                        const CustomTextForm(
+                          hintText: 'Enter Mobile',
+                          labelText: 'Mobile Number',
+                          // focusNode: ,
+
+                        ),
+
+                        const SizedBox(height: 25,),
+
+                        const CustomTextForm(
+                          hintText: 'Enter Gender',
+                          labelText: 'Gender',
+                          // focusNode: ,
+
+                        ),
+
+                        const SizedBox(height: 25,),
+
+                        const CustomTextForm(
+                          hintText: 'Enter Email Address',
+                          labelText: 'EmailAddress',
+                          // focusNode: ,
+
+                        ),
+
+                        const SizedBox(height: 25,),
+
+                        const CustomTextForm(
+                          hintText: 'Enter DOB',
+                          labelText: 'Date of Birth',
+                          // focusNode: ,
+
+                        ),
+
+                        const SizedBox(height: 25,),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Your onPressed logic here
+                          },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(200, 50), // Set width and height
+                            backgroundColor: Colors.orange, // Set the background color of the button
+                            shape: RoundedRectangleBorder( // Optional: Rounded corners
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: Text(
+                            'Save',
+                            style: TextStyle(color: Colors.white), // Optional: Set text color
+                          ),
+                        )
+
+                      ],
+                    ),
+                  ),
                 )
             ),
           );
