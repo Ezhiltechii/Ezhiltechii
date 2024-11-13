@@ -2,6 +2,9 @@
 import 'package:cook_bite/screen/dashboard/dasboard_event.dart';
 import 'package:cook_bite/screen/dashboard/dasboard_screen.dart';
 import 'package:cook_bite/screen/dashboard/dashboard_bloc.dart';
+import 'package:cook_bite/screen/food_detail_screen/food_detail_bloc.dart';
+import 'package:cook_bite/screen/food_detail_screen/food_detail_event.dart';
+import 'package:cook_bite/screen/food_detail_screen/food_details_screen.dart';
 import 'package:cook_bite/screen/landing_screen/landing_bloc.dart';
 import 'package:cook_bite/screen/landing_screen/landing_event.dart';
 import 'package:cook_bite/screen/landing_screen/landing_screen.dart';
@@ -26,6 +29,7 @@ class AppRoutes {
   static const String landingScreen = 'landing_screen';
   static const String dashboardScreen = 'dashboard_screen';
   static const String profileScreen = 'profile_screen';
+  static const String detailScreen = 'details_screen';
   static const String otpScreen = 'otp_screen';
 
 }
@@ -42,6 +46,8 @@ Route<dynamic> getRoute(RouteSettings settings) {
       return _buildProfileScreen();
     case AppRoutes.otpScreen:
       return _buildOtpScreen();
+    case AppRoutes.detailScreen:
+      return _buildDetailScreen();
   }
   return _buildInProgressScreen();
 }
@@ -78,6 +84,15 @@ Route<dynamic> _buildProfileScreen() {
   return MaterialPageRoute(
     builder: (BuildContext context) =>
         addAuthBloc(context, PageBuilder.buildProfileScreen()),
+  );
+}
+
+// _buildDetailScreen
+
+Route<dynamic> _buildDetailScreen() {
+  return MaterialPageRoute(
+    builder: (BuildContext context) =>
+        addAuthBloc(context, PageBuilder.buildDetailScreen()),
   );
 }
 
@@ -123,6 +138,13 @@ class PageBuilder {
     return BlocProvider(create: (BuildContext context) =>
     ProfileBloc()..add(ProfileInitialEvent()),
       child: const ProfileScreen(),
+    );
+  }
+
+  static Widget buildDetailScreen() {
+    return BlocProvider(create: (BuildContext context) =>
+    FoodDetailBloc()..add( FoodDetailInitialEvent()),
+      child: const FoodDetailScreen(),
     );
   }
 

@@ -22,13 +22,13 @@ class LandingBloc extends Bloc<LandingEvent, BaseState> {
     print('********* call the bloc');
       // Initialize the lists
       banners = [
-        SvgPicture.asset(
+        Image.asset(
           ImageResources.landing_one,
         ),
-        SvgPicture.asset(
-          ImageResources.landing_one,
+        Image.asset(
+          ImageResources.landing_two,
         ),
-        SvgPicture.asset(
+        Image.asset(
           ImageResources.landing_one,
         ),
       ];
