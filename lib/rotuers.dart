@@ -8,6 +8,10 @@ import 'package:cook_bite/screen/landing_screen/landing_screen.dart';
 import 'package:cook_bite/screen/login_screen/login_bloc.dart';
 import 'package:cook_bite/screen/login_screen/login_event.dart';
 import 'package:cook_bite/screen/login_screen/login_screen.dart';
+import 'package:cook_bite/screen/otp_screen/otp_bloc.dart';
+import 'package:cook_bite/screen/otp_screen/otp_event.dart';
+import 'package:cook_bite/screen/otp_screen/otp_screen.dart';
+import 'package:cook_bite/screen/otp_screen/otp_screen.dart';
 import 'package:cook_bite/screen/profile/profile_bloc.dart';
 import 'package:cook_bite/screen/profile/profile_event.dart';
 import 'package:cook_bite/screen/profile/profile_screen.dart';
@@ -22,6 +26,7 @@ class AppRoutes {
   static const String landingScreen = 'landing_screen';
   static const String dashboardScreen = 'dashboard_screen';
   static const String profileScreen = 'profile_screen';
+  static const String otpScreen = 'otp_screen';
 
 }
 
@@ -35,6 +40,8 @@ Route<dynamic> getRoute(RouteSettings settings) {
       return _buildDashboardScreen();
     case AppRoutes.profileScreen:
       return _buildProfileScreen();
+    case AppRoutes.otpScreen:
+      return _buildOtpScreen();
   }
   return _buildInProgressScreen();
 }
@@ -74,6 +81,14 @@ Route<dynamic> _buildProfileScreen() {
   );
 }
 
+Route<dynamic> _buildOtpScreen() {
+  return MaterialPageRoute(
+    builder: (BuildContext context) =>
+        addAuthBloc(context, PageBuilder.buildOtpScreen()),
+  );
+}
+
+
 class PageBuilder {
   static Widget buildInProgressScreen() {
     return BlocProvider(
@@ -110,6 +125,14 @@ class PageBuilder {
       child: const ProfileScreen(),
     );
   }
+
+  static Widget buildOtpScreen() {
+    return BlocProvider(create: (BuildContext context) =>
+    OtpBloc()..add(OtpInitialEvent()),
+      child: const OtpScreen(phoneNumber: '',),
+    );
+  }
+
 }
 Widget addAuthBloc(BuildContext context, Widget widget) {
   print('========= add Auth data=======');

@@ -44,7 +44,6 @@ dependencies:
   equatable: ^2.0.5
   build_runner: ^2.4.13
   http: ^1.2.2
-  flutter_secure_storage: ^4.2.1
   fluttertoast: ^8.2.8
   flutter_bloc: ^8.1.6
   flutter_svg: ^2.0.13
