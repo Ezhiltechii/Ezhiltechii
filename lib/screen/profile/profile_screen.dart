@@ -118,6 +118,7 @@ class _LoginScreenState extends State<ProfileScreen> {
                         const CustomTextForm(
                           hintText: 'Enter Email Address',
                           labelText: 'EmailAddress',
+
                           // focusNode: ,
 
                         ),
@@ -138,7 +139,7 @@ class _LoginScreenState extends State<ProfileScreen> {
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(200, 50), // Set width and height
-                            backgroundColor: Colors.orange, // Set the background color of the button
+                            backgroundColor: Colors.deepOrange, // Set the background color of the button
                             shape: RoundedRectangleBorder( // Optional: Rounded corners
                               borderRadius: BorderRadius.circular(8),
                             ),
