@@ -162,7 +162,7 @@ class _LandingScreen extends State<LandingScreen> {
                     ),
                   ),
                   ElevatedButton(onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.dashboardScreen);
+                    Navigator.pushNamed(context, AppRoutes.loginScreen);
                   }, child: Text('login'))
                 ],
               ),
