@@ -48,18 +48,18 @@ class DioClient {
       debugPrint('responseData${DioExceptionType.values}');
       return e.response;
     }
-    if (e.type == DioErrorType.connectionTimeout) {
+    if (e.type == DioExceptionType.connectionTimeout) {
       return showToast('Please check your internet connection');
     }
-    if (e.type == DioErrorType.receiveTimeout) {
+    if (e.type == DioExceptionType.receiveTimeout) {
       return showToast('Unable to connect to the server');
     }
-    if (e.type == DioErrorType.badResponse) {
+    if (e.type == DioExceptionType.badResponse) {
       return 'Something went wrong';
     }
 
     /// When the request is cancelled, dio will throw a error with this type.
-    if (e.type == DioErrorType.cancel) {
+    if (e.type == DioExceptionType.cancel) {
       return 'Something went wrong';
     }
   }

@@ -1,10 +1,7 @@
-
-
-
-
 import 'package:cook_bite/base/base_state.dart';
 import 'package:cook_bite/screen/profile/profile_bloc.dart';
 import 'package:cook_bite/widgets/customTextFormField.dart';
+import 'package:cook_bite/widgets/custom_appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +21,7 @@ class _LoginScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    bloc = BlocProvider. of<ProfileBloc>(context);
+    bloc = BlocProvider.of<ProfileBloc>(context);
   }
 
   @override
@@ -46,9 +43,8 @@ class _LoginScreenState extends State<ProfileScreen> {
         builder: (BuildContext context, BaseState state) {
           return SafeArea(
             child: Scaffold(
-                appBar: AppBar(
-                  title: const Text("Profile"),
-                ),
+                appBar: const CustomAppBar(
+                    title: 'My Profile', showBackButton: false),
                 body: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(18.0),
@@ -60,8 +56,8 @@ class _LoginScreenState extends State<ProfileScreen> {
                             children: [
                               const CircleAvatar(
                                 radius: 60,
-                                child: Icon(Icons.person),// Adjust size as needed
-                                // backgroundImage: AssetImage('assets/avatar_placeholder.png'), // Replace with your asset
+                                child:
+                                    Icon(Icons.person),
                               ),
                               Positioned(
                                 bottom: 0,
@@ -83,78 +79,75 @@ class _LoginScreenState extends State<ProfileScreen> {
                               ),
                             ],
                           ),
-
                         ),
-
-                        SizedBox(height: 30,),
-
+                        SizedBox(
+                          height: 30,
+                        ),
                         const CustomTextForm(
                           hintText: 'Enter username',
                           labelText: 'UserName',
                           // focusNode: ,
-
                         ),
-
-                        const SizedBox(height: 25,),
-
+                        const SizedBox(
+                          height: 25,
+                        ),
                         const CustomTextForm(
                           hintText: 'Enter Mobile',
                           labelText: 'Mobile Number',
                           // focusNode: ,
-
                         ),
-
-                        const SizedBox(height: 25,),
-
+                        const SizedBox(
+                          height: 25,
+                        ),
                         const CustomTextForm(
                           hintText: 'Enter Gender',
                           labelText: 'Gender',
                           // focusNode: ,
-
                         ),
-
-                        const SizedBox(height: 25,),
-
+                        const SizedBox(
+                          height: 25,
+                        ),
                         const CustomTextForm(
                           hintText: 'Enter Email Address',
                           labelText: 'EmailAddress',
-
                           // focusNode: ,
-
                         ),
-
-                        const SizedBox(height: 25,),
-
+                        const SizedBox(
+                          height: 25,
+                        ),
                         const CustomTextForm(
                           hintText: 'Enter DOB',
                           labelText: 'Date of Birth',
                           // focusNode: ,
-
                         ),
-
-                        const SizedBox(height: 25,),
+                        const SizedBox(
+                          height: 25,
+                        ),
                         ElevatedButton(
                           onPressed: () {
                             // Your onPressed logic here
                           },
                           style: ElevatedButton.styleFrom(
-                            minimumSize: Size(200, 50), // Set width and height
-                            backgroundColor: Colors.deepOrange, // Set the background color of the button
-                            shape: RoundedRectangleBorder( // Optional: Rounded corners
+                            minimumSize: Size(200, 50),
+                            // Set width and height
+                            backgroundColor: Colors.orange,
+                            // Set the background color of the button
+                            shape: RoundedRectangleBorder(
+                              // Optional: Rounded corners
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
                           child: Text(
                             'Save',
-                            style: TextStyle(color: Colors.white), // Optional: Set text color
+                            style: TextStyle(
+                                color:
+                                    Colors.white), // Optional: Set text color
                           ),
                         )
-
                       ],
                     ),
                   ),
-                )
-            ),
+                )),
           );
         },
       ),

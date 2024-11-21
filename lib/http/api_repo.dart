@@ -18,18 +18,23 @@ class APIRepository {
         BuildContext? context,
         bool isBearerTokenNeed = true,
       }) async {
-    String bearertoken = '';
-    await PreferenceHelper.getBearer().then((value) {
-      if (value != null && isBearerTokenNeed) {
-        bearertoken = value;
-        // AidivaFlashSingleton.instance.bearerToken=value;
-      }
-    });
+    // String bearertoken = '';
+    // await PreferenceHelper.getBearer().then((value) {
+    //   if (value != null && isBearerTokenNeed) {
+    //     bearertoken = value;
+    //     // AidivaFlashSingleton.instance.bearerToken=value;
+    //   }
+    // });
+
+
+    print('------ $method');
+    print('------ $userArguments');
+    // print('------ $method');
+
 
 
     dynamic returnableValues;
     var dynamicApiRequest = DioClient.dioConfig();
-    String? pbKey;
     try {
       Response response;
 
@@ -65,7 +70,6 @@ class APIRepository {
               url,
               data: userArguments,
             );
-
             break;
           }
         case ApiRequestMethod.patch:
@@ -86,18 +90,10 @@ class APIRepository {
       debugPrint(
           'url-> $url\n req body--> $userArguments \n response--> ${response.data}');
 
-      // if (response.data is String && pbKey != null) {
-      //   returnableValues = jsonDecode(await decryptData(pbKey, response.data));
-      // } else {
-      if (ApiRequestMethod.get != method &&
-          response.data['message'] != null &&
-          response.data['message'] != '') {
-        //   showToast(AidivaFlashSingleton.instance.errorMapValues?[response.data['message']] ?? response.data['message']);
-      }
 
       returnableValues = response.data;
       // }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       dynamic errorValues;
       if (e.response != null) {
         errorValues = DioClient.errorHandling(e);

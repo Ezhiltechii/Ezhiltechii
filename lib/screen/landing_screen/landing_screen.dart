@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:cook_bite/base/base_state.dart';
@@ -12,7 +11,6 @@ import '../../rotuers.dart';
 import '../../utils/custom_color.dart';
 import '../../utils/custom_text.dart';
 import 'landing_bloc.dart';
-
 
 
 class LandingScreen extends StatefulWidget {
@@ -79,7 +77,7 @@ class _LandingScreen extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: ColorResource.colorE22C24,
+      statusBarColor: ColorResource.colorFE734C,
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.dark,
     ));
@@ -94,7 +92,7 @@ class _LandingScreen extends State<LandingScreen> {
           }
         }
       },
-      child:  BlocBuilder(
+      child: BlocBuilder(
         bloc: bloc,
         builder: (BuildContext context, BaseState state) {
           if (state is LoadingState) {
@@ -125,19 +123,21 @@ class _LandingScreen extends State<LandingScreen> {
                           children: [
                             // Display the banner image from the bloc
                             SizedBox(
-                              width: 200.0,  // Set appropriate width and height
-                              height: 200.0,
-                              child: bloc.banners[index]
+                                width: 200.0,
+                                // Set appropriate width and height
+                                height: 200.0,
+                                child: bloc.banners[index]
 
                             ),
 
 
-                            SizedBox(height: 16.0), // Spacing between image and text
+                            SizedBox(height: 16.0),
+                            // Spacing between image and text
 
                             // Display the title from the bloc
                             Text(
                               bloc.titles[index],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
@@ -145,12 +145,13 @@ class _LandingScreen extends State<LandingScreen> {
                               textAlign: TextAlign.center,
                             ),
 
-                            SizedBox(height: 8.0), // Spacing between title and description
+                            SizedBox(height: 8.0),
+                            // Spacing between title and description
 
                             // Display the description from the bloc
                             Text(
                               bloc.descriptions[index],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.grey,
                               ),
@@ -162,7 +163,7 @@ class _LandingScreen extends State<LandingScreen> {
                     ),
                   ),
                   ElevatedButton(onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.loginScreen);
+                    Navigator.pushNamed(context, AppRoutes.dashboardScreen);
                   }, child: Text('login'))
                 ],
               ),

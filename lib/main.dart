@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: ColorResource.colorE22C24,
+      statusBarColor: ColorResource.colorFE734C,
     ));
     return DynamicTheme(
       themeCollection: AppThemes().getThemeCollections(),

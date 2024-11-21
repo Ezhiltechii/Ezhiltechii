@@ -12,5 +12,12 @@ class LoginInitialEvent extends LoginEvent {
 
 }
 
+class LoginAPI extends LoginEvent {
+ BuildContext? context;
+ dynamic arguments;
+
+ LoginAPI({this.context, this.arguments});
+
+}
 
 

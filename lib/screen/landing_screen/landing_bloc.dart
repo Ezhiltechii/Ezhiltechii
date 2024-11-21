@@ -44,6 +44,7 @@ class LandingBloc extends Bloc<LandingEvent, BaseState> {
         StringResource.landing2Description,
         StringResource.landing3Description,
       ];
+
       emit(SuccessState(successResponse: 'success'));
     });
   }
