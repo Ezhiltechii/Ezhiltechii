@@ -1,6 +1,6 @@
 class HttpUrl {
-  static const String baseUrl = 'https://newsitread.pythonanywhere.com/';
-  static const String login = '${baseUrl}app/login-with-mobile/';
+  static const String baseUrl = 'http://192.168.1.8:3000/api/';
+  static const String login = '${baseUrl}login';
 
 
 

@@ -2,8 +2,11 @@
 
 import 'dart:io';
 import 'package:cook_bite/rotuers.dart';
+import 'package:cook_bite/screen/login_screen/login_event.dart';
+import 'package:cook_bite/screen/login_screen/login_model.dart';
 import 'package:cook_bite/screen/otp_screen/otp_screen.dart';
 import 'package:cook_bite/screen/otp_screen/otp_screen.dart';
+import 'package:cook_bite/utils/contants.dart';
 import 'package:cook_bite/utils/images.dart';
 import 'package:cook_bite/utils/validator.dartvalidator.dart';
 import 'package:flutter/foundation.dart';
@@ -46,6 +49,15 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  loginUser() {
+    final Map<String, dynamic> data = {
+     'mobile' : _phoneNoController.text
+    };
+
+      bloc.add(LoginAPI(context: context, arguments: data));
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, BaseState>(
@@ -54,6 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is SuccessState) {
           if (state.successResponse is String) {
             // Handle success response as needed
+          } else if(state.successResponse is LoginApi){
+            final LoginApi response = state.successResponse;
+            Navigator.pushNamed(context, AppRoutes.otpScreen);
+
           }
         }
       },
@@ -115,9 +131,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(5)),
             ),
           onPressed: (){
-         Navigator.pushNamed(context, AppRoutes.otpScreen);
+            loginUser();
           },
-          child: Text(
+          child: const Text(
             "Save",
             textAlign: TextAlign.center,
           ),

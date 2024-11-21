@@ -1,5 +1,6 @@
 import 'package:cook_bite/rotuers.dart';
 import 'package:cook_bite/screen/dashboard/dashboard_bloc.dart';
+import 'package:cook_bite/widgets/custom_appBar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,22 +57,39 @@ class _LoginScreenState extends State<DashboardScreen> {
 
           return SafeArea(
             child: Scaffold(
-              appBar: AppBar(
-                title: const Text('Dashboard'),
-                actions: [
-                  SizedBox(height: 10,),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.profileScreen);
-                    },
-                    child: CircleAvatar(
-                      radius: 45,
-                      backgroundColor: Colors.grey,
-                      child: Icon(Icons.person),
-                    ),
-                  )
-                ],
+              appBar: CustomAppBar(
+                title: 'Dashboard',
+                showBackButton: false,
+                  actions: [
+                    const SizedBox(height: 10,),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.profileScreen);
+                      },
+                      child: const CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.grey,
+                        child: Icon(Icons.person),
+                      ),
+                    )
+                  ],
               ),
+              // appBar: AppBar(
+              //   title: const Text('Dashboard'),
+              //   actions: [
+              //     SizedBox(height: 10,),
+              //     GestureDetector(
+              //       onTap: () {
+              //         Navigator.pushNamed(context, AppRoutes.profileScreen);
+              //       },
+              //       child: CircleAvatar(
+              //         radius: 45,
+              //         backgroundColor: Colors.grey,
+              //         child: Icon(Icons.person),
+              //       ),
+              //     )
+              //   ],
+              // ),
               body: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
